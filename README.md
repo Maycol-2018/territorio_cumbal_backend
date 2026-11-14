@@ -24,3 +24,12 @@ Usuario inicial: `juan123` / `Password123!`.
 Las respuestas de error usan `{ "message": "...", "errors": { "campo": "..." } }` cuando hay errores de validación. Nunca se devuelve `passwordHash`.
 
 El frontend debe definir `VITE_API_URL=http://localhost:3000`, guardar el token recibido y enviarlo como `Authorization: Bearer <token>`.
+
+## Despliegue en Render
+
+- Build Command: `npm ci && npm run build`
+- Start Command: `npm start`
+- Render ejecutará `prisma generate` automáticamente mediante `postinstall`.
+- Define en Render las variables `DATABASE_URL`, `JWT_SECRET`, `JWT_EXPIRES_IN`, `FRONTEND_URL`, `NODE_ENV=production` y `PORT` si Render la proporciona automáticamente.
+- `FRONTEND_URL` debe ser la URL pública de Vercel, sin una barra final.
+- Para crear tablas en la base de datos de Render, ejecuta una vez: `npx prisma migrate deploy` usando la `DATABASE_URL` de producción.
