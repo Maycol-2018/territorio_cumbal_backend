@@ -27,8 +27,9 @@ El frontend debe definir `VITE_API_URL=http://localhost:3000`, guardar el token 
 
 ## Despliegue en Render
 
-- Build Command: `npm ci && npm run build`
+- Build Command: `npm ci --include=dev && npm run build`
 - Start Command: `npm start`
+- Es importante usar `--include=dev`: TypeScript, los tipos de Node y Prisma se necesitan durante la compilación aunque el servicio ejecute en producción.
 - Render ejecutará `prisma generate` automáticamente mediante `postinstall`.
 - Define en Render las variables `DATABASE_URL`, `JWT_SECRET`, `JWT_EXPIRES_IN`, `FRONTEND_URL`, `NODE_ENV=production` y `PORT` si Render la proporciona automáticamente.
 - `FRONTEND_URL` debe ser la URL pública de Vercel, sin una barra final.
